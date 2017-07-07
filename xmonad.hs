@@ -19,6 +19,7 @@ import XMonad.Layout.Gaps
 import XMonad.Layout.Grid
 import XMonad.Layout.Circle
 import XMonad.Layout.Spacing
+import XMonad.Layout.Spiral
 
 import qualified Data.Map as M
 import qualified XMonad.StackSet as W
@@ -34,7 +35,7 @@ myTerminal  = "termite"
 myXmonadBar = "dzen2 -x '1920' -y '2136' -h '24' -w '1920' -ta 'l' -fg '#A6E22E' -bg '#000000'"
 myStatusBar = "conky -c /usr/local/etc/conky/ | dzen2 -x '3840' -y '2136' -w '1920' -h '24' -ta 'r' -bg '#000000' -fg '#A6E22E' "
 myBitmapsDir = "/home/lordink/dzen2"
-myLayout = smartSpacing 5 $  gaps[(D,24)] $ ThreeCol 1 (3/100) (1/2) ||| ThreeColMid 1 (3/100) (1/2) ||| Circle ||| Grid ||| Full
+myLayout = smartSpacing 5 $  gaps[(D,24)] $ ThreeCol 1 (3/100) (1/2) ||| ThreeColMid 1 (3/100) (1/2) ||| Circle ||| Grid ||| spiral (toRational (2/(1+sqrt(5)::Double))) ||| Full
 myManageHook = composeAll $
     [ isDialog  --> doFloat ]
 
